@@ -39,14 +39,11 @@
 
             <!-- GALLERY -->
             <div class="col-8 gallery g-3">
-                <figure class="active">
-                    <img src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg"
-                        alt="gallery-image-Svezia">
+                <figure v-for="(pic, index) in pictures" class="">
+                    <img :src="pic.url" :alt="gallery-image-pic.title">
                     <figcaption>
-                        <h3 class="title">Svezia</h3>
-                        <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing
-                            elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut
-                            veniam.</p>
+                        <h3 class="title">{{pic.title}}</h3>
+                        <p class="description">{{pic.description}}</p>
                     </figcaption>
                 </figure>
             </div>
@@ -59,8 +56,8 @@
             </div>
 
             <div class="col-8 thumbnails offset-2 g-3 d-flex justify-content-between">
-                <img src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg"
-                    alt="gallery-image-Svezia" class="active">
+                <img v-for="(pic,index) in pictures" :src="pic.url" alt="gallery-image-pic.title"
+                    class="">
             </div>
 
         </div>
