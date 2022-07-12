@@ -32,15 +32,16 @@
 
             <div class="col-2 buttons text-end g-3">
                 <!-- PREV-BUTTON -->
-                <div class="prev">
+                <div class="prev" @click="showPrev">
                     <i class="bi bi-arrow-left-square-fill"></i>
                 </div>
             </div>
 
             <!-- GALLERY -->
             <div class="col-8 gallery g-3">
-                <figure v-for="(pic, index) in pictures" class="">
-                    <img :src="pic.url" :alt="gallery-image-pic.title">
+                <figure v-for="(pic, index) in pictures"
+                    :class="{'active' : currentActiveIndex === index}">
+                    <img :src="pic.url" :alt="pic.title">
                     <figcaption>
                         <h3 class="title">{{pic.title}}</h3>
                         <p class="description">{{pic.description}}</p>
@@ -50,14 +51,14 @@
 
             <div class="col-2 buttons g-3">
                 <!-- NEXT-BUTTON -->
-                <div class="next">
+                <div class="next" @click="showNext">
                     <i class="bi bi-arrow-right-square-fill"></i>
                 </div>
             </div>
 
             <div class="col-8 thumbnails offset-2 g-3 d-flex justify-content-between">
-                <img v-for="(pic,index) in pictures" :src="pic.url" alt="gallery-image-pic.title"
-                    class="">
+                <img v-for="(pic,index) in pictures" :src="pic.url" alt="pic.title"
+                    :class="{'active' : currentActiveIndex === index}">
             </div>
 
         </div>

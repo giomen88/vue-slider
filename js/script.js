@@ -64,6 +64,12 @@ const root = new Vue({
         currentActiveIndex: 0
     },
     methods: {
+        showNext() {
+            this.currentActiveIndex++;
+        },
+        showPrev() {
+            this.currentActiveIndex--;
+        },
 
     }
 });
