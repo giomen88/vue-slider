@@ -23,6 +23,8 @@ console.log('ok', Vue);
 Vue.config.devtools = true;
 
 const root = new Vue({
+    name: 'carousel',
+
     el: "#carousel",
 
     data: {
@@ -63,24 +65,36 @@ const root = new Vue({
 
         currentActiveIndex: 0
     },
+
+    computed: {
+        isFirstPic() {
+            return this.currentActiveIndex === 0;
+        },
+
+        isLastPic() {
+            return this.currentActiveIndex === this.pictures.length - 1;
+        }
+    },
+
     methods: {
         showNext() {
-            this.currentActiveIndex++;
 
-            if (this.currentActiveIndex === this.pictures.length) {
+            if (this.isLastPic) {
                 this.currentActiveIndex = 0;
-            }
-
+            } else this.currentActiveIndex++;
         },
+
         showPrev() {
 
-            this.currentActiveIndex--;
-
-            if (this.currentActiveIndex < 0) {
-                this.currentActiveIndex = this.pictures.length;
-            }
+            if (this.isFirstPic) {
+                this.currentActiveIndex = this.pictures.length - 1;
+            } else this.currentActiveIndex--;
         },
 
+        showCurrent(index) {
+
+            this.currentActiveIndex = index;
+        },
     }
 });
 
